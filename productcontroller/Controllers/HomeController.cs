@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
 
@@ -17,26 +18,48 @@ namespace productcontroller.Controllers
             Decimal Price = 199.99m;
             bool status = true;
 
-            ViewData["productid"]=productid;
-            ViewData["name"]=Name;
-            ViewData["quantity"]=Quantity;
-            ViewData["price"]=Price;
-            ViewData["status"]=status;
+            ViewData["productid"] = productid;
+            ViewData["name"] = Name;
+            ViewData["quantity"] = Quantity;
+            ViewData["price"] = Price;
+            ViewData["status"] = status;
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            int employeeid = 255;
+            String employee = "james";
+            String department = "lab";
+
+            ViewBag.employeeid = employeeid;
+            ViewBag.employee = employee;
+            ViewBag.department = department;
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Redirect()
         {
-            ViewBag.Message = "Your contact page.";
+
+            ViewBag.messages = "this is a viewbag message";
+            ViewData["message"] = "this is a viewdata message";
+            TempData["data"] = "this is a tempdata message";
+            Session["sessiondata"] = "this is a session message";
 
             return View();
         }
+        public ActionResult success()
+        {
+            TempData["data"] = "this is a tempdata message";
+            Session["sessiondata"] = "this is a session message";
+
+
+
+            return View();
+
+        }
+    
+    
     }
 }
